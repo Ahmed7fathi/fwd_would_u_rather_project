@@ -2,8 +2,8 @@
 a nice game using react & redux
 
 
-###installation
+### installation
 `npm install `
 
-###run the app
+### run the app
 `npm start `
