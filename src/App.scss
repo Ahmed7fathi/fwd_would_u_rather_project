@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
+nav {
+  width: 60%;
+  margin: 0 auto;
+
+  li {
+    .active-nav {
+      color: red;
+    }
+
+    display: inline-block;
+    padding: 1rem;
+    margin-left: 1.2rem;
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 2rem;
+    }
+  }
+}
+
+.app {
+    border-top: 3px solid #58be64;
+    padding-top: 5rem;
+  .wrapper{
+    width: 50%;
+    margin: 0 auto;
+  }
+}
