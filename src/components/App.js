@@ -12,6 +12,8 @@ import LeaderBoard from './LeaderBoard';
 import NewQuestion from './NewQuestion';
 // actions
 import {handleInitialData} from '../actions/shared'
+import LoadingBar from 'react-redux-loading'
+
 
 class App extends Component {
     componentDidMount() {
@@ -21,19 +23,33 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
-                <Nav/>
-                <div className="app">
-                    <div className="wrapper">
-                        <Route exact path='/' activeClassName='active-nav' component={Home}/>
-                        <Route exact path='/newQs' component={NewQuestion}/>
-                        <Route exact path='/leaderBoard' component={LeaderBoard}/>
-                    </div>
-                </div>
-            </Router>
+            <div>
+                <LoadingBar/>
+                {
+                    this.props.loading === true ? null : (
+                        <Router>
+                            <Nav/>
+                            <div className="app">
+                                <div className="wrapper">
+                                    <Route exact path='/' activeClassName='active-nav' component={Home}/>
+                                    <Route exact path='/newQs' component={NewQuestion}/>
+                                    <Route exact path='/leaderBoard' component={LeaderBoard}/>
+                                </div>
+                            </div>
+                        </Router>
+                    )
+
+                }
+            </div>
         )
     }
 
 }
 
-export default connect()(App);
+function mapStateToProps({loading}) {
+    return {
+        loading
+    }
+}
+
+export default connect(mapStateToProps)(App);
