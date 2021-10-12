@@ -1,13 +1,7 @@
 import {showLoading, hideLoading} from 'react-redux-loading'
-import {GET_ALL_QUESTIONS} from "./questions"
+import {getAllQuestionsAction} from "./questions"
 import {_getQuestions} from '../utils/_DATA';
 
-export function getAllQuestionsAction(questions) {
-    return {
-        type: GET_ALL_QUESTIONS,
-        questions,
-    };
-}
 
 
 export function handleInitialData() {
