@@ -1,8 +1,8 @@
 import {showLoading, hideLoading} from 'react-redux-loading'
+import {setAuthedUser} from "./authedUser"
 import {getUsersAction} from "./users"
 import {getAllQuestionsAction} from "./questions"
 import {_getUsers, _getQuestions} from '../utils/_DATA';
-
 
 
 export function handleInitialData() {
@@ -26,5 +26,13 @@ export function GetUsersData() {
             dispatch(getUsersAction(_getUsers));
             dispatch(hideLoading())
         })
+    }
+}
+
+export function userLogin(id) {
+    return (dispatch) => {
+        dispatch(showLoading());
+        dispatch(setAuthedUser(id));
+        dispatch(hideLoading())
     }
 }
