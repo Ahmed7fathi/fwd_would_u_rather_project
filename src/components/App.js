@@ -1,14 +1,24 @@
+// react
 import React, {Component} from 'react'
-import '../App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 
+// css style
+import '../App.css';
+// components
 import Nav from './Nav';
 import Home from './Home';
 import LeaderBoard from './LeaderBoard';
 import NewQuestion from './NewQuestion';
-
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+// actions
+import {handleInitialData} from '../actions/shared'
 
 class App extends Component {
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(handleInitialData());
+    }
+
     render() {
         return (
             <Router>
@@ -26,4 +36,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default connect()(App);

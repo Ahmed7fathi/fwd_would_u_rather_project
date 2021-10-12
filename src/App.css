@@ -1,6 +1,10 @@
 * {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  box-sizing: border-box; }
+
+html, body {
+  padding-bottom: 1.3rem; }
 
 nav {
   width: 60%;
@@ -17,10 +21,47 @@ nav {
       font-size: 2rem; }
 
 .app {
-  border-top: 3px solid #58be64;
-  padding-top: 5rem; }
+  border-top: 3px solid #58be64; }
   .app .wrapper {
     width: 50%;
     margin: 0 auto; }
+
+.question-card {
+  margin-top: 2rem;
+  border: 2px solid #cfcfcf;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+  .question-card .qs-header {
+    font-weight: bold;
+    padding: 20px;
+    background: rgba(217, 217, 217, 0.25);
+    border-bottom: 1px solid #bbbbbb; }
+  .question-card .info {
+    padding: 1.2rem 1.5rem 0 1.5rem;
+    display: flex; }
+    .question-card .info .qs-img-wrapper, .question-card .info .info-body {
+      padding: 1.5rem 1.5rem 1rem 1.5rem; }
+    .question-card .info .qs-img-wrapper {
+      margin: 2rem;
+      outline: 2px solid #CCC; }
+    .question-card .info .info-body {
+      flex-grow: 2;
+      box-shadow: -1px 0 0 0 rgba(34, 36, 38, 0.15); }
+      .question-card .info .info-body .poll-btn {
+        display: block;
+        width: 90%;
+        padding: 8px;
+        margin: 1.5rem auto 0 auto;
+        background: white;
+        font-size: 1.2rem;
+        border: 1px solid gray;
+        border-radius: 5px;
+        outline: none;
+        transition: .3s all; }
+        .question-card .info .info-body .poll-btn:hover {
+          background: green;
+          color: white;
+          cursor: pointer;
+          border: 1px solid white; }
 
 /*# sourceMappingURL=App.css.map */
