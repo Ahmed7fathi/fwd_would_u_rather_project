@@ -9,10 +9,11 @@ import '../App.css';
 // components
 import Nav from './Nav';
 import Home from './Home';
+import Login from './Login';
 import LeaderBoard from './LeaderBoard';
 import NewQuestion from './NewQuestion';
 // actions
-import {handleInitialData} from '../actions/shared'
+import {GetUsersData, handleInitialData} from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 
 const TITLE = 'Would You Rather ?';
@@ -21,6 +22,7 @@ class App extends Component {
     componentDidMount() {
         const {dispatch} = this.props;
         dispatch(handleInitialData());
+        dispatch(GetUsersData());
     }
 
     render() {
@@ -39,11 +41,11 @@ class App extends Component {
                                     <Route exact path='/' activeClassName='active-nav' component={Home}/>
                                     <Route exact path='/newQs' component={NewQuestion}/>
                                     <Route exact path='/leaderBoard' component={LeaderBoard}/>
+                                    <Route exact path='/login' component={Login}/>
                                 </div>
                             </div>
                         </Router>
                     )
-
                 }
             </div>
         )
@@ -51,9 +53,10 @@ class App extends Component {
 
 }
 
-function mapStateToProps({loading}) {
+function mapStateToProps({loading, users}) {
     return {
-        loading
+        loading,
+        users
     }
 }
 

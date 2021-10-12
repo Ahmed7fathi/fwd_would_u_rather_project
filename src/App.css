@@ -107,4 +107,42 @@ nav {
         cursor: pointer;
         border: 1px solid white; }
 
+.login-page {
+  margin-top: 5rem;
+  border: 2px solid #cfcfcf;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+  .login-page .card-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    background: rgba(217, 217, 217, 0.25);
+    border-bottom: 1px solid #bbbbbb; }
+  .login-page .card-body {
+    padding: 2rem; }
+    .login-page .card-body select {
+      width: 95%;
+      padding: 10px;
+      margin-top: 1rem; }
+      .login-page .card-body select option {
+        font-size: 20px;
+        font-weight: bold;
+        color: green; }
+    .login-page .card-body .login-btn {
+      display: block;
+      width: 95%;
+      padding: 10px;
+      margin-top: 3.33rem;
+      background: white;
+      font-size: 1.2rem;
+      border: 1px solid gray;
+      border-radius: 5px;
+      outline: none;
+      transition: .3s all; }
+      .login-page .card-body .login-btn:hover {
+        background: green;
+        color: white;
+        cursor: pointer;
+        border: 1px solid white; }
+
 /*# sourceMappingURL=App.css.map */

@@ -16,6 +16,9 @@ class NavBar extends Component {
                     <li>
                         <NavLink activeClassName="active-nav" exact to="/leaderBoard">Leader Board</NavLink>
                     </li>
+                     <li>
+                        <NavLink activeClassName="active-nav" exact to="/login">Login</NavLink>
+                    </li>
                 </ul>
             </nav>
         )
