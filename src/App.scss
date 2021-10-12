@@ -3,9 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-html, body{
+
+html, body {
   padding-bottom: 1.3rem;
 }
+
 nav {
   width: 60%;
   margin: 0 auto;
@@ -80,7 +82,8 @@ nav {
         border-radius: 5px;
         outline: none;
         transition: .3s all;
-        &:hover{
+
+        &:hover {
           background: green;
           color: white;
           cursor: pointer;
@@ -89,4 +92,65 @@ nav {
       }
     }
   }
+}
+
+.new-question-page {
+  margin-top: 5rem;
+  border: 2px solid #cfcfcf;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+
+  .card-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    background: rgba(217, 217, 217, 0.25);
+    border-bottom: 1px solid #bbbbbb;
+  }
+
+  .card-body {
+    padding: 2rem;
+
+    .new-qs-btn, input {
+      width: 95%;
+      padding: 10px;
+    }
+    input{
+      border: 1px solid #ccc;
+    }
+
+    #or {
+      padding-top: 10px;
+      width: 95%;
+      text-align: center;
+      border-bottom: 1px solid #000;
+      line-height: 0.1em;
+      margin: 10px 0 20px;
+
+      span {
+        background: #fff;
+        padding: 0 10px;
+      }
+    }
+
+    .new-qs-btn {
+      display: block;
+      margin-top: 1rem;
+      background: white;
+      font-size: 1.2rem;
+      border: 1px solid gray;
+      border-radius: 5px;
+      outline: none;
+      transition: .3s all;
+
+      &:hover {
+        background: green;
+        color: white;
+        cursor: pointer;
+        border: 1px solid white;
+      }
+    }
+  }
+
 }
