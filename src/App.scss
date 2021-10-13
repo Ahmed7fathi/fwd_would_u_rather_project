@@ -38,8 +38,40 @@ nav {
   }
 }
 
+
+.home-page {
+  margin-top: 4rem;
+
+  .container {
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    padding: 1.5rem;
+  }
+
+
+  .switch-btn {
+    width: 49%;
+    padding: 10px;
+    border: 1px solid #d6d6d6;
+    font-size: 18px;
+    font-weight: bold;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background: white;
+    transition: 0.9s all;
+  }
+
+  .active-btn {
+    background: green;
+    color: white;
+    border-radius: 3px;
+    transition: 0.9s all;
+  }
+
+}
+
 .question-card {
-  margin-top: 2rem;
+  margin-top: 1rem;
   border: 2px solid #cfcfcf;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -116,7 +148,8 @@ nav {
       width: 95%;
       padding: 10px;
     }
-    input{
+
+    input {
       border: 1px solid #ccc;
     }
 
@@ -174,11 +207,12 @@ nav {
   .card-body {
     padding: 2rem;
 
-    select{
+    select {
       width: 95%;
       padding: 10px;
       margin-top: 1rem;
-      option{
+
+      option {
         font-size: 20px;
         font-weight: bold;
         color: green;
