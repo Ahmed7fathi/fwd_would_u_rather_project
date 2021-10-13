@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {Helmet} from 'react-helmet'
+import {Helmet} from 'react-helmet';
 
 // css style
 import '../App.css';
@@ -12,6 +12,7 @@ import Home from './Home';
 import Login from './Login';
 import LeaderBoard from './LeaderBoard';
 import NewQuestion from './NewQuestion';
+import ProtectedRoute from './ProtectedRoute';
 // actions
 import {GetUsersData, handleInitialData} from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
@@ -39,10 +40,26 @@ class App extends Component {
                             <div className="app">
                                 <div className="wrapper">
                                     <Switch>
-                                        <Route path='/login' component={Login}/>
-                                        <Route path='/newQs' component={NewQuestion}/>
-                                        <Route path='/leaderBoard' component={LeaderBoard}/>
-                                        <Route path='/' activeClassName='active-nav' component={Home}/>
+                                        <Route
+                                            path="/login"
+                                            name="Login Page"
+                                            component={Login}
+                                        />
+                                        <ProtectedRoute
+                                            path="/leaderBoard"
+                                            name="Leader Board"
+                                            component={LeaderBoard}
+                                        />
+                                        <ProtectedRoute
+                                            path="/newQs"
+                                            name="New Question"
+                                            component={NewQuestion}
+                                        />
+                                        <ProtectedRoute
+                                            path="/"
+                                            name="Dashboard"
+                                            component={Home}
+                                        />
                                     </Switch>
                                 </div>
                             </div>
@@ -55,9 +72,10 @@ class App extends Component {
 
 }
 
-function mapStateToProps({loading, users}) {
+function mapStateToProps({loading, authedUser, users}) {
     return {
         loading,
+        authedUser,
         users
     }
 }
