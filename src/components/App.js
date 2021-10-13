@@ -1,6 +1,6 @@
 // react
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Helmet} from 'react-helmet'
 
@@ -38,10 +38,12 @@ class App extends Component {
                             <Nav/>
                             <div className="app">
                                 <div className="wrapper">
-                                    <Route exact path='/' activeClassName='active-nav' component={Home}/>
-                                    <Route exact path='/newQs' component={NewQuestion}/>
-                                    <Route exact path='/leaderBoard' component={LeaderBoard}/>
-                                    <Route exact path='/login' component={Login}/>
+                                    <Switch>
+                                        <Route path='/login' component={Login}/>
+                                        <Route path='/newQs' component={NewQuestion}/>
+                                        <Route path='/leaderBoard' component={LeaderBoard}/>
+                                        <Route path='/' activeClassName='active-nav' component={Home}/>
+                                    </Switch>
                                 </div>
                             </div>
                         </Router>
