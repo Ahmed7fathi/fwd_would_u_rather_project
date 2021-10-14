@@ -241,3 +241,73 @@ nav {
   }
 
 }
+
+.leaderBoard-page {
+
+  .score-card {
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    border: 2px solid rgba(34, 36, 38, .15);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+
+    .info {
+      padding: 1.2rem 1.5rem 0 1.5rem;
+      display: flex;
+
+      .img-wrapper, .info-body {
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+      }
+
+      .img-wrapper {
+        margin: 2rem;
+        outline: 2px solid #CCC;
+      }
+
+      .info-body {
+        flex-grow: 2;
+        //box-shadow: -1px 0 0 0 rgba(34, 36, 38, .15);
+        border-right: 1px solid rgba(34, 36, 38, .15);
+        border-left: 1px solid rgba(34, 36, 38, .15);
+
+        p {
+          padding: 10px;
+        }
+      }
+
+      .total-score {
+        flex-grow: 1.5;
+        border: 1px solid rgba(34, 36, 38, .15);
+        margin-left: 10px;
+
+        .header {
+          background: #ececec;
+          text-align: center;
+          border-bottom: 1px solid rgba(34, 36, 38, .15);
+          padding: 5px;
+        }
+
+        .score-num {
+          margin: .6rem auto;
+          text-align: center;
+          height: 65px;
+          width: 65px;
+          background-color: #00a400;
+          border-radius: 50%;
+        }
+
+        p {
+          font-size: 2.6rem;
+          font-weight: bold;
+          color: white;
+          padding-top: .5rem;
+          text-align: center;
+
+        }
+
+      }
+    }
+  }
+}
+
