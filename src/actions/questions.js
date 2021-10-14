@@ -9,3 +9,10 @@ export function getAllQuestionsAction(questions) {
         questions,
     };
 }
+
+export function addQuestion(question) {
+    return {
+        type: ADD_NEW_QUESTION,
+        question,
+    };
+}

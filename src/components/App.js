@@ -55,12 +55,12 @@ class App extends Component {
                                             component={Home}
                                         />
                                         <ProtectedRoute
-                                            path="/leaderBoard"
+                                            path="/leaderboard"
                                             name="Leader Board"
                                             component={LeaderBoard}
                                         />
                                         <ProtectedRoute
-                                            path="/newQs"
+                                            path="/add"
                                             name="New Question"
                                             component={NewQuestion}
                                         />

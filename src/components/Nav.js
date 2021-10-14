@@ -20,10 +20,10 @@ class NavBar extends Component {
                             <NavLink activeClassName="active-nav" exact to="/">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName="active-nav" exact to="/newQs">New Question</NavLink>
+                            <NavLink activeClassName="active-nav" exact to="/add">New Question</NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName="active-nav" exact to="/leaderBoard">Leader Board</NavLink>
+                            <NavLink activeClassName="active-nav" exact to="/leaderboard">Leader Board</NavLink>
                         </li>
                         <li>
                             Hello {users[authedUser].name}

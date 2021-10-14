@@ -1,7 +1,36 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
+
+import {addNewQuestion} from '../actions/shared'
 
 class NewQuestion extends Component {
+
+    state = {
+      redirect: false
+    };
+
+    addQuestion() {
+        const opOneDom = document.getElementById('option-one');
+        const opTwoDom = document.getElementById('option-two');
+        const authedUser = this.props.authedUser;
+
+        const question = {
+            author: authedUser,
+            optionOneText: opOneDom.value,
+            optionTwoText: opTwoDom.value,
+        };
+        opOneDom.value = '';
+        opTwoDom.value = '';
+
+        this.props.dispatch(addNewQuestion(question));
+        this.setState({redirect: true})
+    }
+
     render() {
+        if (this.state.redirect) {
+            return <Redirect to="/"/>;
+        }
         return (
             <div className="new-question-page">
                 <div className="card">
@@ -13,10 +42,13 @@ class NewQuestion extends Component {
                         <br/>
                         <h5>Would you rather ....</h5>
                         <br/>
-                        <input type="text" placeholder="Enter Option One Text here"/>
+                        <input type="text" id="option-one" placeholder="Enter Option One Text here"/>
                         <h2 id="or"><span> OR </span></h2>
-                        <input type="text" placeholder="Enter Option One Text here"/>
-                        <button className="new-qs-btn">Submit</button>
+                        <input type="text" id="option-two" placeholder="Enter Option One Text here"/>
+                        <button className="new-qs-btn" onClick={() => {
+                            this.addQuestion()
+                        }}>Submit
+                        </button>
                     </div>
                 </div>
             </div>
@@ -25,4 +57,10 @@ class NewQuestion extends Component {
 
 }
 
-export default NewQuestion;
+function mapStateToProps({authedUser}) {
+    return {
+        authedUser
+    }
+}
+
+export default connect(mapStateToProps)(NewQuestion);
