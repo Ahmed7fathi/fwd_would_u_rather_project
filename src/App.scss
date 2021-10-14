@@ -9,23 +9,88 @@ html, body {
 }
 
 nav {
-  width: 60%;
-  margin: 0 auto;
+  //width: 100%;
+  //margin: 5px auto;
+  display: flex;
+
 
   li {
+    display: inline-block;
+    padding: .80rem;
+    margin-left: 1rem;
+
     .active-nav {
       color: red;
+      font-weight: bold;
+      text-decoration: underline;
+      &:hover{
+        color: red;
+      }
     }
 
-    display: inline-block;
-    padding: 1rem;
-    margin-left: 1.2rem;
 
     a {
       text-decoration: none;
       color: black;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      transition: 0.5s color;
+      &:hover{
+        color: green;
+      }
     }
+  }
+
+
+  .nav-left {
+    align-items: flex-start;
+    width: 100%;
+
+  }
+
+  .nav-left li {
+    margin-top: .55rem;
+  }
+
+  .nav-right {
+    align-items: flex-end;
+    width: 40%;
+
+
+    #nav-avatar {
+      display: inline-block;
+      vertical-align: top;
+
+      max-width: 45px;
+      max-height: 45px;
+      border-radius: 50%;
+
+    }
+
+    #username {
+      display: inline-block;
+      margin-left: .55rem;
+      margin-top: .9rem;
+
+      span {
+        color: green
+      }
+    }
+
+    #logout {
+      display: inline-block;
+      margin-left: 0 !important;
+
+      font-size: 18px;
+      color: #a12c0e;
+      cursor: pointer;
+      transition: 0.6s color;
+
+      &:hover {
+        color: red;
+        text-decoration: underline;
+      }
+    }
+
   }
 }
 
@@ -95,7 +160,16 @@ nav {
 
     .qs-img-wrapper {
       margin: 2rem;
-      outline: 2px solid #CCC;
+      max-width: 180px;
+      max-height: 180px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 6.5px;
+        box-shadow: 1px 3px 10px gray;
+      }
+
     }
 
     .info-body {
@@ -262,7 +336,17 @@ nav {
 
       .img-wrapper {
         margin: 2rem;
-        outline: 2px solid #CCC;
+        max-width: 220px;
+        max-height: 220px;
+        min-width: 220px;
+        min-height: 220px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 6.5px;
+          box-shadow: 1px 3px 10px gray;
+        }
       }
 
       .info-body {
@@ -285,11 +369,11 @@ nav {
           background: #ececec;
           text-align: center;
           border-bottom: 1px solid rgba(34, 36, 38, .15);
-          padding: 5px;
+          padding: 20px 5px;
         }
 
         .score-num {
-          margin: .6rem auto;
+          margin: 5rem auto;
           text-align: center;
           height: 65px;
           width: 65px;

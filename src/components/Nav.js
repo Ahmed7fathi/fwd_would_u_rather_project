@@ -4,18 +4,19 @@ import {connect} from 'react-redux';
 import {setAuthedUser} from '../actions/authedUser'
 
 class NavBar extends Component {
-    handleLogout(){
+    handleLogout() {
         this.props.dispatch(setAuthedUser(null))
     }
 
 
     render() {
         const authedUser = this.props.authedUser;
-        const users = this.props.users;
+        const user = this.props.user;
+
         return (
             authedUser && (
                 <nav>
-                    <ul>
+                    <ul className="nav-left">
                         <li>
                             <NavLink activeClassName="active-nav" exact to="/">Home</NavLink>
                         </li>
@@ -25,12 +26,16 @@ class NavBar extends Component {
                         <li>
                             <NavLink activeClassName="active-nav" exact to="/leaderboard">Leader Board</NavLink>
                         </li>
+                    </ul>
+                    <ul className="nav-right">
                         <li>
-                            Hello {users[authedUser].name}
+                            <img id="nav-avatar" src={user.avatarURL} alt={`${user} avatar`}/>
+                            <span id="username">Hello <span>{user.name}</span></span>
                         </li>
-                         <li onClick={()=> this.handleLogout()}>
-                             <p  style={{fontSize: "18px", color: "red", cursor: "pointer"}} > Logout !</p>
+                        <li onClick={() => this.handleLogout()}>
+                            <a id="logout"> Logout !</a>
                         </li>
+
                     </ul>
                 </nav>
             ))
@@ -38,9 +43,10 @@ class NavBar extends Component {
 }
 
 function mapStateToProps({authedUser, users}) {
+    const user = users[authedUser];
     return {
         authedUser,
-        users
+        user
     }
 }
 

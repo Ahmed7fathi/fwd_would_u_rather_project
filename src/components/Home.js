@@ -16,6 +16,7 @@ class Home extends Component {
 
     render() {
         const questions = this.props.questions;
+        const users = this.props.users;
 
         return (
             <div className="home-page">
@@ -31,10 +32,10 @@ class Home extends Component {
                     {
                         this.currentQs === 0 ?
                             questions.unanswered.map((question) => {
-                                return <QuestionCard key={question.id} question={question}/>
+                                return <QuestionCard key={question.id} question={question} users={users}/>
                             }) :
                             questions.answered.map((question) => {
-                                return <QuestionCard key={question.id} question={question}/>
+                                return <QuestionCard key={question.id} question={question} users={users}/>
                             })
                     }
                 </div>
@@ -54,6 +55,7 @@ function mapStateToProps({authedUser, users, questions}) {
         .filter((qs) => !userAnswersIds.includes(qs.id)).sort((q) => -q.timestamp);
 
     return {
+        users,
         questions: {
             answered,
             unanswered

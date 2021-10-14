@@ -7,18 +7,54 @@ html, body {
   padding-bottom: 1.3rem; }
 
 nav {
-  width: 60%;
-  margin: 0 auto; }
+  display: flex; }
   nav li {
     display: inline-block;
-    padding: 1rem;
-    margin-left: 1.2rem; }
+    padding: .80rem;
+    margin-left: 1rem; }
     nav li .active-nav {
-      color: red; }
+      color: red;
+      font-weight: bold;
+      text-decoration: underline; }
+      nav li .active-nav:hover {
+        color: red; }
     nav li a {
       text-decoration: none;
       color: black;
-      font-size: 2rem; }
+      font-size: 1.5rem;
+      transition: 0.5s color; }
+      nav li a:hover {
+        color: green; }
+  nav .nav-left {
+    align-items: flex-start;
+    width: 100%; }
+  nav .nav-left li {
+    margin-top: .55rem; }
+  nav .nav-right {
+    align-items: flex-end;
+    width: 40%; }
+    nav .nav-right #nav-avatar {
+      display: inline-block;
+      vertical-align: top;
+      max-width: 45px;
+      max-height: 45px;
+      border-radius: 50%; }
+    nav .nav-right #username {
+      display: inline-block;
+      margin-left: .55rem;
+      margin-top: .9rem; }
+      nav .nav-right #username span {
+        color: green; }
+    nav .nav-right #logout {
+      display: inline-block;
+      margin-left: 0 !important;
+      font-size: 18px;
+      color: #a12c0e;
+      cursor: pointer;
+      transition: 0.6s color; }
+      nav .nav-right #logout:hover {
+        color: red;
+        text-decoration: underline; }
 
 .app {
   border-top: 3px solid #58be64; }
@@ -65,7 +101,13 @@ nav {
       padding: 1.5rem 1.5rem 1rem 1.5rem; }
     .question-card .info .qs-img-wrapper {
       margin: 2rem;
-      outline: 2px solid #CCC; }
+      max-width: 180px;
+      max-height: 180px; }
+      .question-card .info .qs-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        border-radius: 6.5px;
+        box-shadow: 1px 3px 10px gray; }
     .question-card .info .info-body {
       flex-grow: 2;
       box-shadow: -1px 0 0 0 rgba(34, 36, 38, 0.15); }
@@ -180,7 +222,15 @@ nav {
       padding: 1.5rem 1.5rem 1rem 1.5rem; }
     .leaderBoard-page .score-card .info .img-wrapper {
       margin: 2rem;
-      outline: 2px solid #CCC; }
+      max-width: 220px;
+      max-height: 220px;
+      min-width: 220px;
+      min-height: 220px; }
+      .leaderBoard-page .score-card .info .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        border-radius: 6.5px;
+        box-shadow: 1px 3px 10px gray; }
     .leaderBoard-page .score-card .info .info-body {
       flex-grow: 2;
       border-right: 1px solid rgba(34, 36, 38, 0.15);
@@ -195,9 +245,9 @@ nav {
         background: #ececec;
         text-align: center;
         border-bottom: 1px solid rgba(34, 36, 38, 0.15);
-        padding: 5px; }
+        padding: 20px 5px; }
       .leaderBoard-page .score-card .info .total-score .score-num {
-        margin: .6rem auto;
+        margin: 5rem auto;
         text-align: center;
         height: 65px;
         width: 65px;
