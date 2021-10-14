@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {GetUsersData, userLogin} from "../actions/shared";
+import {Redirect} from 'react-router-dom'
+import {GetUsersData, userLogin} from "../actions/shared"
 
 class Login extends Component {
 
@@ -10,7 +11,8 @@ class Login extends Component {
     }
 
     state = {
-        currentUser: null
+        currentUser: null,
+        redirectToReferrer: false
     };
 
 
@@ -21,11 +23,21 @@ class Login extends Component {
     handleLogin() {
         const currentUser = document.getElementById('users-list').value;
         this.setState({currentUser: currentUser.value});
-        this.props.dispatch(userLogin(currentUser))
+        this.props.dispatch(userLogin(currentUser));
+        this.setState(() => ({
+            ...this.state,
+            redirectToReferrer: true
+        }))
     }
 
     render() {
         const users = this.props.users;
+        const {from} = this.props.location.state || {from: {pathname: '/'}};
+        const {redirectToReferrer} = this.state;
+        if (redirectToReferrer === true) {
+            return <Redirect to={from}/>
+        }
+
 
         return (
             <div className="login-page">

@@ -1,29 +1,30 @@
 import React from 'react'
 import {Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux';
-console.log('props component ', this.props);
 
 
+const ProtectedRoute = (props) => {
+    console.log('zz : ', props);
+    return (
+        <Route
+            exact={props.exact}
+            path={props.path}
+            render={() =>
+                props.authedUser ? (
+                    <props.component {...props}/>
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: '/login',
+                            state: {from: props.location},
+                        }}
+                    />
+                )
+            }
+        />
+    )
 
-
-
-const ProtectedRoute = ({component: Component, authedUser, path}) => (
-    <Route
-        path={path}
-        render={() =>
-            authedUser ? (
-                <Component />
-            ) : (
-                <Redirect
-                    to={{
-                        pathname: '/login',
-                        state: {from: this.location},
-                    }}
-                />
-            )
-        }
-    />
-);
+}
 
 function mapStateToProps({authedUser}) {
     return {

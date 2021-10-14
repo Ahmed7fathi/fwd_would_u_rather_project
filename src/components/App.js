@@ -1,6 +1,6 @@
 // react
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Helmet} from 'react-helmet';
 
@@ -13,6 +13,8 @@ import Login from './Login';
 import LeaderBoard from './LeaderBoard';
 import NewQuestion from './NewQuestion';
 import ProtectedRoute from './ProtectedRoute';
+import PageNotFound from './PageNotFound';
+
 // actions
 import {GetUsersData, handleInitialData} from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
@@ -41,9 +43,16 @@ class App extends Component {
                                 <div className="wrapper">
                                     <Switch>
                                         <Route
+                                            exact
                                             path="/login"
                                             name="Login Page"
                                             component={Login}
+                                        />
+                                        <ProtectedRoute
+                                            exact
+                                            path="/"
+                                            name="Dashboard"
+                                            component={Home}
                                         />
                                         <ProtectedRoute
                                             path="/leaderBoard"
@@ -55,11 +64,8 @@ class App extends Component {
                                             name="New Question"
                                             component={NewQuestion}
                                         />
-                                        <ProtectedRoute
-                                            path="/"
-                                            name="Dashboard"
-                                            component={Home}
-                                        />
+                                        <Route path="/404" component={PageNotFound} />
+                                        <Redirect to="/404"/>
                                     </Switch>
                                 </div>
                             </div>
