@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
-
+import {setAuthedUser} from '../actions/authedUser'
 
 class NavBar extends Component {
+    handleLogout(){
+        this.props.dispatch(setAuthedUser(null))
+    }
+
+
     render() {
         const authedUser = this.props.authedUser;
         const users = this.props.users;
@@ -23,8 +28,8 @@ class NavBar extends Component {
                         <li>
                             Hello {users[authedUser].name}
                         </li>
-                         <li>
-                            Logout !
+                         <li onClick={()=> this.handleLogout()}>
+                             <p  style={{fontSize: "18px", color: "red", cursor: "pointer"}} > Logout !</p>
                         </li>
                     </ul>
                 </nav>
