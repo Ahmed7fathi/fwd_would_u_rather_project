@@ -23,7 +23,8 @@ nav {
       color: red;
       font-weight: bold;
       text-decoration: underline;
-      &:hover{
+
+      &:hover {
         color: red;
       }
     }
@@ -34,7 +35,8 @@ nav {
       color: black;
       font-size: 1.5rem;
       transition: 0.5s color;
-      &:hover{
+
+      &:hover {
         color: green;
       }
     }
@@ -143,15 +145,26 @@ nav {
 
 
   .qs-header {
-    font-weight: bold;
     padding: 20px;
     background: rgba(217, 217, 217, 0.25);
     border-bottom: 1px solid #bbbbbb;
 
+    .username {
+      color: green;
+      font-weight: bold;
+      font-size: 1.22rem;
+
+    }
+
+    .date {
+      float: right;
+      font-size: 13px;
+    }
+
   }
 
   .info {
-    padding: 1.2rem 1.5rem 0 1.5rem;
+    padding: 0 1.5rem 0 1.5rem;
     display: flex;
 
     .qs-img-wrapper, .info-body {
@@ -181,7 +194,7 @@ nav {
         display: block;
         width: 90%;
         padding: 8px;
-        margin: 1.5rem auto 0 auto;
+        margin: 5rem auto 0 auto;
         background: white;
         font-size: 1.2rem;
         border: 1px solid gray;
@@ -195,6 +208,12 @@ nav {
           cursor: pointer;
           border: 1px solid white;
         }
+      }
+
+      .question {
+        margin-top: 2.2rem;
+        text-align: center;
+        color: red;
       }
     }
   }

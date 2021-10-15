@@ -90,12 +90,18 @@ nav {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px; }
   .question-card .qs-header {
-    font-weight: bold;
     padding: 20px;
     background: rgba(217, 217, 217, 0.25);
     border-bottom: 1px solid #bbbbbb; }
+    .question-card .qs-header .username {
+      color: green;
+      font-weight: bold;
+      font-size: 1.22rem; }
+    .question-card .qs-header .date {
+      float: right;
+      font-size: 13px; }
   .question-card .info {
-    padding: 1.2rem 1.5rem 0 1.5rem;
+    padding: 0 1.5rem 0 1.5rem;
     display: flex; }
     .question-card .info .qs-img-wrapper, .question-card .info .info-body {
       padding: 1.5rem 1.5rem 1rem 1.5rem; }
@@ -115,7 +121,7 @@ nav {
         display: block;
         width: 90%;
         padding: 8px;
-        margin: 1.5rem auto 0 auto;
+        margin: 5rem auto 0 auto;
         background: white;
         font-size: 1.2rem;
         border: 1px solid gray;
@@ -127,6 +133,10 @@ nav {
           color: white;
           cursor: pointer;
           border: 1px solid white; }
+      .question-card .info .info-body .question {
+        margin-top: 2.2rem;
+        text-align: center;
+        color: red; }
 
 .new-question-page {
   margin-top: 5rem;
