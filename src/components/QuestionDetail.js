@@ -23,17 +23,29 @@ class QuestionDetail extends Component {
             qid,
             answers
         ));
-               this.props.dispatch(GetUsersData());
+        this.props.dispatch(GetUsersData());
 
 
         this.setState({submit_redirect: true})
 
     };
 
+    get_percentage = (option) => {
+        const {question} = this.props.location.state;
+        const all_votes = question.optionOne.votes.length + question.optionTwo.votes.length;
+        const votes = option.votes.length;
+        return {
+            all_votes,
+            votes,
+            percentage: ((100 * votes) / all_votes).toFixed(1)
+        };
+    };
+
 
     render() {
         const {question, card_type} = this.props.location.state;
         const {userOption} = this.state;
+        const {authedUser, users} = this.props;
 
         if (this.state.submit_redirect) {
             return (<Redirect to="/"/>)
@@ -54,7 +66,7 @@ class QuestionDetail extends Component {
                                     </div>
                                     <div className="info">
                                         <div className="qs-img-wrapper">
-                                            <img src={question.avatarURL} alt={`${question.author} avatar`}/>
+                                            <img src={users[question.author].avatarURL} alt={`${question.author} avatar`}/>
                                         </div>
                                         <div className="info-body">
                                             <h3>Would you rather </h3>
@@ -83,19 +95,88 @@ class QuestionDetail extends Component {
                             </div>
                         ) :
                         (
-                            <h1>details</h1>
+                            <div>
+                                <div className="details-card">
+                                    <div className="card-header">
+                                        <p>
+                                            Asked by
+                                            <span className="username"> {question.author}</span>
+                                        </p>
+                                    </div>
+                                    <div className="info">
+                                        <div className="qs-img-wrapper">
+                                            <img src={users[question.author].avatarURL}
+                                                 alt={`${question.author} avatar`}/>
+                                        </div>
+                                        <div className="info-body">
+                                            <h1>Results : </h1>
 
+                                            <div className={
+                                                question.optionOne.votes.includes(authedUser) ?
+                                                    'question selected' : 'question'
+                                            }
+                                            >
+                                                <h4> {question.optionOne.text} </h4>
+                                                <div className="bar-holder">
+                                                    <div
+                                                        className="bar"
+                                                        style={{width: `${this.get_percentage(question.optionOne).percentage}%`}}
+                                                    >
+                                                        {this.get_percentage(question.optionOne).percentage}
+                                                    </div>
+                                                </div>
+                                                <p className="votes">
+                                                    {this.get_percentage(question.optionOne).votes}
+                                                    <span className="out"> out of </span>
+                                                    {this.get_percentage(question.optionOne).all_votes}
+                                                </p>
+                                                {
+                                                    question.optionOne.votes.includes(authedUser) && (
+                                                        <p className="user-vote"> Your vote </p>
+                                                    )
+                                                }
+                                            </div>
+
+                                            <div className={
+                                                question.optionTwo.votes.includes(authedUser) ?
+                                                    'question selected' : 'question'
+                                            }>
+                                                <h4> {question.optionTwo.text} </h4>
+                                                <div className="bar-holder">
+                                                    <div
+                                                        className="bar"
+                                                        style={{width: `${this.get_percentage(question.optionTwo).percentage}%`}}
+                                                    >
+                                                        {this.get_percentage(question.optionTwo).percentage}
+                                                    </div>
+                                                </div>
+                                                <p className="votes">
+                                                    {this.get_percentage(question.optionTwo).votes}
+                                                    <span className="out"> out of </span>
+                                                    {this.get_percentage(question.optionTwo).all_votes}
+                                                </p>
+                                                {
+                                                    question.optionTwo.votes.includes(authedUser) && (
+                                                        <p className="user-vote"> Your vote </p>
+                                                    )
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         )
-
                 }
             </div>
         )
     }
 }
 
-function mapStateToProps({authedUser}) {
+function mapStateToProps({authedUser, users, questions}) {
     return {
-        authedUser
+        authedUser,
+        users,
+        questions
     }
 }
 

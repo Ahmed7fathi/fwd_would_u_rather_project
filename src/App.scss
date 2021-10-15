@@ -524,3 +524,111 @@ nav {
   }
 
 }
+
+.details-card {
+  border: 3px solid rgba(217, 217, 217, 0.25);
+
+  .card-header {
+    padding: 20px;
+    background: rgba(217, 217, 217, 0.25);
+    border-bottom: 1px solid #bbbbbb;
+
+    .username {
+      color: green;
+      font-weight: bold;
+      font-size: 1.22rem;
+
+    }
+
+  }
+
+  .info {
+    padding: 0 1.5rem 0 1.5rem;
+    display: flex;
+
+    .qs-img-wrapper, .info-body {
+      padding: 1.5rem 1.5rem 1rem 1.5rem;
+    }
+
+    .qs-img-wrapper {
+      margin: 2rem;
+      max-width: 180px;
+      max-height: 180px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 6.5px;
+        box-shadow: 1px 3px 10px gray;
+      }
+
+    }
+
+    .info-body {
+
+      flex-grow: 2;
+      box-shadow: -1px 0 0 0 rgba(34, 36, 38, .15);
+
+      .question {
+              position: relative;
+
+        border: 1px solid rgba(34, 36, 38, .15);
+        padding: 20px;
+        margin: 20px;
+
+        .bar-holder {
+          width: 85%;
+          height: 33px;
+          margin: 20px auto;
+          background: rgb(225, 225, 225);
+          border-radius: 6px;
+
+
+          .bar {
+            width: 50%;
+            height: 100%;
+            padding-top: 8px;
+            background: rgb(85, 159, 70);
+            color: #fff;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 400;
+          }
+
+        }
+
+        .votes {
+          font-weight: bold;
+          text-align: center;
+          .out {
+            margin: 5px;
+          }
+        }
+
+      }
+
+      .selected {
+        border: 1px solid rgba(34, 36, 38, .15);
+        background: rgba(162, 250, 152, 0.45);
+      }
+
+      .user-vote {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        height: 50px;
+        width: 50px;
+        padding-top: 8px;
+        text-align: center;
+        border-radius: 50%;
+        background: rgba(239, 198, 0, 0.86);
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+      }
+
+    }
+  }
+
+}
