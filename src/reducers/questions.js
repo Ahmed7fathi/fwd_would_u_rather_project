@@ -1,4 +1,4 @@
-import {GET_ALL_QUESTIONS, ADD_NEW_QUESTION} from '../actions/questions';
+import {GET_ALL_QUESTIONS, ADD_NEW_QUESTION, ANSWER_TO_QUESTION} from '../actions/questions';
 
 
 function questionsReducer(state = {}, action) {
@@ -15,6 +15,20 @@ function questionsReducer(state = {}, action) {
                     ...action.question
                 }
             };
+        case ANSWER_TO_QUESTION:
+            const {authedUser, qid, answer} = action.payload;
+            // console.warn('data  : ', authedUser, qid, answer);
+            return {
+                ...state,
+                [qid]: {
+                    ...state[qid],
+                    [answer]: {
+                        ...state[qid][answer],
+                        votes: state[qid][answer].votes.concat(authedUser)
+                    }
+                }
+            };
+
         default:
             return state
     }

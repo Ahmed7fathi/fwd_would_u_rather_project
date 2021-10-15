@@ -16,3 +16,14 @@ export function addQuestion(question) {
         question,
     };
 }
+
+export function answerQuestion({authedUser, qid, answer}) {
+    return {
+        type: ANSWER_TO_QUESTION,
+        payload: {
+            authedUser,
+            qid,
+            answer
+        }
+    };
+}

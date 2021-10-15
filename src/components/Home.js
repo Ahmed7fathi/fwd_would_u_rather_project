@@ -32,10 +32,10 @@ class Home extends Component {
                     {
                         this.currentQs === 0 ?
                             questions.unanswered.map((question) => {
-                                return <QuestionCard key={question.id} question={question} users={users}/>
+                                return <QuestionCard key={question.id} question={question} users={users} card_type={this.currentQs}/>
                             }) :
                             questions.answered.map((question) => {
-                                return <QuestionCard key={question.id} question={question} users={users}/>
+                                return <QuestionCard key={question.id} question={question} users={users} card_type={this.currentQs}/>
                             })
                     }
                 </div>

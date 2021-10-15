@@ -12,6 +12,7 @@ import Home from './Home';
 import Login from './Login';
 import LeaderBoard from './LeaderBoard';
 import NewQuestion from './NewQuestion';
+import QuestionDetail from './QuestionDetail';
 import ProtectedRoute from './ProtectedRoute';
 import PageNotFound from './PageNotFound';
 
@@ -63,6 +64,11 @@ class App extends Component {
                                             path="/add"
                                             name="New Question"
                                             component={NewQuestion}
+                                        />
+                                        <ProtectedRoute
+                                            path="/question:question_id"
+                                            name="Question Details"
+                                            component={QuestionDetail}
                                         />
                                         <Route path="/404" component={PageNotFound} />
                                         <Redirect to="/404"/>

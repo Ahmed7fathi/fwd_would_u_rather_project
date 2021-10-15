@@ -1,8 +1,8 @@
 import {showLoading, hideLoading} from 'react-redux-loading'
 import {setAuthedUser} from "./authedUser"
 import {getUsersAction} from "./users"
-import {getAllQuestionsAction, addQuestion} from "./questions"
-import {_getUsers, _getQuestions, _saveQuestion} from '../utils/_DATA';
+import {getAllQuestionsAction, addQuestion, answerQuestion} from "./questions"
+import {_getUsers, _getQuestions, _saveQuestion, _saveQuestionAnswer} from '../utils/_DATA';
 
 
 export function handleInitialData() {
@@ -43,6 +43,17 @@ export function addNewQuestion(question) {
         return _saveQuestion(question)
             .then((question) => {
                 dispatch(addQuestion(question));
+                dispatch(hideLoading())
+            });
+    }
+}
+
+export function saveQuestionAnswer(authedUser, qid, answer) {
+    return (dispatch) => {
+        dispatch(showLoading());
+        return _saveQuestionAnswer({authedUser, qid, answer})
+            .then(() => {
+                dispatch(answerQuestion({authedUser, qid, answer}));
                 dispatch(hideLoading())
             });
     }
