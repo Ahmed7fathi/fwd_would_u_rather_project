@@ -1,7 +1,7 @@
 import React from 'react';
 
 function convertTimestamp(timestamp){
-    return  Date(timestamp)
+    return  new Date(timestamp).toString()
 }
 
 function questionCard({question, users}) {

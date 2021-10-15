@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 
 
 const ProtectedRoute = (props) => {
-    console.log('zz : ', props);
     return (
         <Route
             exact={props.exact}
