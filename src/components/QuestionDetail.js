@@ -43,6 +43,10 @@ class QuestionDetail extends Component {
 
 
     render() {
+        if ( !this.props.location.state){
+            return (<Redirect to="/404"/>)
+        }
+
         const {question, card_type} = this.props.location.state;
         const {userOption} = this.state;
         const {authedUser, users} = this.props;
