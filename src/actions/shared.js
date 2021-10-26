@@ -1,6 +1,6 @@
 import {showLoading, hideLoading} from 'react-redux-loading'
 import {setAuthedUser} from "./authedUser"
-import {getUsersAction} from "./users"
+import {getUsersAction, addQuestionToUser, addAnswerToUserAction} from "./users"
 import {getAllQuestionsAction, addQuestion, answerQuestion} from "./questions"
 import {_getUsers, _getQuestions, _saveQuestion, _saveQuestionAnswer} from '../utils/_DATA';
 
@@ -37,12 +37,14 @@ export function userLogin(id) {
     }
 }
 
-export function addNewQuestion(question) {
+export function addNewQuestion(authedUser, question) {
     return (dispatch) => {
         dispatch(showLoading());
         return _saveQuestion(question)
             .then((question) => {
+                console.warn('new question !', question);
                 dispatch(addQuestion(question));
+                dispatch(addQuestionToUser(authedUser,  question.id));
                 dispatch(hideLoading())
             });
     }
@@ -54,6 +56,7 @@ export function saveQuestionAnswer(authedUser, qid, answer) {
         return _saveQuestionAnswer({authedUser, qid, answer})
             .then(() => {
                 dispatch(answerQuestion({authedUser, qid, answer}));
+                dispatch(addAnswerToUserAction(authedUser, qid, answer));
                 dispatch(hideLoading())
             });
     }

@@ -31,9 +31,11 @@ class QuestionDetail extends Component {
         ));
         this.props.dispatch(GetUsersData());
 
-        // change card_type to poll votes card
-        this.setState({card_type: 1})
-
+        setTimeout(() => {
+            // change card_type to poll votes card, updating question answers
+            // todo: add action creator promise maybe ? or destruct question from computedMatch in render function
+            this.setState({card_type: 1, question: this.props.questions[this.question_id]})
+        }, 600);
     };
 
     get_percentage = (option) => {
@@ -59,7 +61,7 @@ class QuestionDetail extends Component {
 
 
         let card_type = this.state.card_type;
-        const question = this.state.question;
+        let question = this.state.question;
 
         const {userOption} = this.state;
         const {authedUser, users} = this.props;

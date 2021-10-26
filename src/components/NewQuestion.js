@@ -23,7 +23,7 @@ class NewQuestion extends Component {
         opOneDom.value = '';
         opTwoDom.value = '';
 
-        this.props.dispatch(addNewQuestion(question));
+        this.props.dispatch(addNewQuestion(authedUser, question));
         this.setState({redirect: true})
     }
 
