@@ -5,9 +5,15 @@ import {Redirect} from 'react-router-dom'
 import {GetUsersData, saveQuestionAnswer} from '../actions/shared'
 
 class QuestionDetail extends Component {
+    question_id = this.props.computedMatch.params['question_id'];
+
+
     state = {
         userOption: null,
-        submit_redirect: false
+        submit_redirect: false,
+        card_type: typeof (this.props.location.state) !== 'undefined' ? this.props.location.state.card_type : 1,
+        question: this.props.questions[this.question_id],
+
     };
 
     handleChange = (e) => this.setState({userOption: e.target.value});
@@ -25,13 +31,13 @@ class QuestionDetail extends Component {
         ));
         this.props.dispatch(GetUsersData());
 
-
-        this.setState({submit_redirect: true})
+        // change card_type to poll votes card
+        this.setState({card_type: 1})
 
     };
 
     get_percentage = (option) => {
-        const {question} = this.props.location.state;
+        const question = this.state.question;
         const all_votes = question.optionOne.votes.length + question.optionTwo.votes.length;
         const votes = option.votes.length;
         return {
@@ -43,18 +49,20 @@ class QuestionDetail extends Component {
 
 
     render() {
-        if ( !this.props.location.state){
+        // console.warn('location state: ', this.props.location.state,
+        //     'local state: ', this.state,
+        //     'valid path ', this.question_id, this.state.question);
+
+        if (!this.state.question) {
             return (<Redirect to="/404"/>)
         }
 
-        const {question, card_type} = this.props.location.state;
+
+        let card_type = this.state.card_type;
+        const question = this.state.question;
+
         const {userOption} = this.state;
         const {authedUser, users} = this.props;
-
-        if (this.state.submit_redirect) {
-            return (<Redirect to="/"/>)
-
-        }
 
 
         return (

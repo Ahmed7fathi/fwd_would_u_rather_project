@@ -66,7 +66,7 @@ class App extends Component {
                                             component={NewQuestion}
                                         />
                                         <ProtectedRoute
-                                            path="/question:question_id"
+                                            path="/questions/:question_id"
                                             name="Question Details"
                                             component={QuestionDetail}
                                         />
