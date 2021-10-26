@@ -6,7 +6,7 @@ poll vote number can be seen if user voted to this poll, <br/>
 the app also contains a 
 LeaderBoard page to show highest score of users <br/>
 user can increase his/her score by answering the polls or creating a new poll
-####App futures 
+#### App futures 
 * users  can login and logout
 * 404 page
 * protected Routes("users can only see some pages if they're logged in.")
